@@ -129,7 +129,7 @@ To be clear, CM tools can be used to provision resources so in the end goal of h
 ```
 resource "aws_instance" "some-instance" {
   ami           = "ami-201720221991yay"
-  instance_type = "t2.micro
+  instance_type = "t2.micro"
 }
 ```
 </summary><br><b>
@@ -145,7 +145,7 @@ The instance itself will be provisioned with type "t2.micro" and using an image 
 ```
 resource "aws_instance" "some-instance" {
   ami           = "ami-201720221991yay"
-  instance_type = "t2.micro
+  instance_type = "t2.micro"
 }
 ```
 </summary><br><b>
@@ -361,7 +361,7 @@ False. You can specify any provider from any URL, not only those from hashicorp.
 <details>
 <summary>What input variables are good for in Terraform?</summary><br><b>
 
-Variables allow you define piece of data in one location instead of repeating the hardcoded value of it in multiple different locations. Then when you need to modify the variable's value, you do it in one location instead of changing each one of the hardcoded values.
+Variables allow you to define a piece of data in one location instead of repeating the hardcoded value of it in multiple different locations. Then when you need to modify the variable's value, you do it in one location instead of changing each one of the hardcoded values.
 </b></details>
 
 <details>
@@ -699,7 +699,7 @@ Why to use it in the first place: you might have resources that have dependency 
 
 Provisioners can be described as plugin to use with Terraform, usually focusing on the aspect of service configuration and make it operational.
 
-Few example of provisioners:
+A few examples of provisioners:
 
 * Run configuration management on a provisioned instance using technology like Ansible, Chef or Puppet.
 * Copying files
@@ -710,7 +710,7 @@ Few example of provisioners:
 <details>
 <summary>Why is it often recommended to use provisioners as last resort?</summary><br><b>
 
-Since a provisioner can run a variety of actions, it's not always feasible to plan and understand what will happen when running a certain provisioner. For this reason, it's usually recommended to use Terraform built-in option, whenever's possible.
+Since a provisioner can run a variety of actions, it's not always feasible to plan and understand what will happen when running a certain provisioner. For this reason, it's usually recommended to use Terraform built-in option, whenever possible.
 
 </b></details>
 
@@ -782,7 +782,7 @@ Output variables are named values that are sourced from the attributes of a modu
 
 eg. Let's say you want to import an aws instance. Then you'll perform following:
 1. Identify that aws instance in console
-2. Refer to it's configuration and write Terraform code which will look something like:
+2. Refer to its configuration and write Terraform code which will look something like this:
 ```
 resource "aws_instance" "tf_aws_instance" {
   ami           = data.aws_ami.ubuntu.id
@@ -847,14 +847,14 @@ False. You should avoid as much possible to edit Terraform state files directly 
 <details>
 <summary>Why storing state file locally on your computer may be problematic?</summary><br><b>
 
-In general, storing state file on your computer isn't a problem. It starts to be a problem when you are part of a team that uses Terraform and then you would like to make sure it's shared. In addition to being shared, you want to be able to handle the fact that different teams members can edit the file and can do it at the same time, so locking is quite an important aspect as well.
+In general, storing state file on your computer isn't a problem. It starts to be a problem when you are part of a team that uses Terraform and then you would like to make sure it's shared. In addition to being shared, you want to be able to handle the fact that different team members can edit the file and can do it at the same time, so locking is quite an important aspect as well.
 </b></details>
 
 <details>
 <summary>Mention some best practices related to tfstate</summary><br><b>
 
   - Don't edit it manually. tfstate was designed to be manipulated by terraform and not by users directly.
-  - Store it in secured location (since it can include credentials and sensitive data in general)
+  - Store it in a secured location (since it can include credentials and sensitive data in general)
   - Backup it regularly so you can roll-back easily when needed 
   - Store it in remote shared storage. This is especially needed when working in a team and the state can be updated by any of the team members
   - Enabled versioning if the storage where you store the state file, supports it. Versioning is great for backups and roll-backs in case of an issue.
